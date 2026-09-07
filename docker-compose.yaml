@@ -1,0 +1,40 @@
+services:
+    palworld:
+        image: thijsvanloef/palworld-server-docker:latest
+        restart: unless-stopped
+        stop_grace_period: 30s
+        ports:
+            - "8211:8211/udp"  # Server port
+            - "27015:27015/udp"  # Steam port
+            # - 8212:8212/tcp  # REST API port
+        user: ${UID}:${GID}
+        environment:
+            TZ: ${TZ}
+            PORT: 8211
+            PLAYERS: 16
+            REST_API_ENABLED: true
+            REST_API_PORT: 8212
+            ENABLE_PERF_THREADING_ARGS: true
+
+            BACKUP_ENABLED: true
+            BACKUP_CRON_EXPRESSION: "0 0 * * *"  # every 12am
+            AUTO_UPDATE_ENABLED: true
+            AUTO_UPDATE_CRON_EXPRESSION: "0 * * * *"  # every hour
+            AUTO_UPDATE_WARN_MINUTES: 30
+            AUTO_REBOOT_ENABLED: true
+            AUTO_REBOOT_CRON_EXPRESSION: "0 3 * * *"  # every 3am
+            AUTO_REBOOT_WARN_MINUTES: 5
+            AUTO_REBOOT_EVEN_IF_PLAYERS_ONLINE: false
+            AUTO_PAUSE_ENABLED: false
+            DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
+
+            SERVER_PASSWORD: ${SERVER_PASSWORD}
+            ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+            SERVER_NAME: ${SERVER_NAME}
+            SERVER_DESCRIPTION: ${SERVER_DESCRIPTION}
+            COMMUNITY: false
+            CROSSPLAY_PLATFORMS: "(Steam,Xbox,PS5,Mac)"
+        env_file:
+            - game-settings.env
+        volumes:
+            - ${DATA_DIR}:/palworld/
