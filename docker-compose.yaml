@@ -38,3 +38,4 @@ services:
             - game-settings.env
         volumes:
             - ${DATA_DIR}:/palworld/
+            - ./mods/MapFastTravelAnywhere:/palworld/steamapps/downloading/2394010/Pal/Content/Paks/MapFastTravelAnywhere:ro
