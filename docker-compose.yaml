@@ -39,5 +39,8 @@ services:
             - game-settings.env
         volumes:
             - ${DATA_DIR}:/palworld/
-            - ./libUE4SS.so:/palworld/steamapps/downloading/2394010/libUE4SS.so:ro
+            - ./ue4ss/libUE4SS.so:/palworld/steamapps/downloading/2394010/libUE4SS.so:ro
+            - ./ue4ss/UE4SS_Signatures:/palworld/steamapps/downloading/2394010/UE4SS_Signatures:ro
+            - ./ue4ss/MemberVariableLayout.ini:/palworld/steamapps/downloading/2394010/MemberVariableLayout.ini:ro
+            - ./ue4ss/UE4SS-settings.ini:/palworld/steamapps/downloading/2394010/UE4SS-settings.ini:ro
             - ./mods:/palworld/steamapps/downloading/2394010/Mods:ro
