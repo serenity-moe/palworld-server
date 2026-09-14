@@ -14,7 +14,6 @@ services:
             PLAYERS: 16
             REST_API_ENABLED: true
             REST_API_PORT: 8212
-            ENABLE_PERF_THREADING_ARGS: true
 
             BACKUP_ENABLED: true
             BACKUP_CRON_EXPRESSION: "0 0 * * *"  # every 12am
