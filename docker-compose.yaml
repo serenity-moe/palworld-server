@@ -9,6 +9,8 @@ services:
             # - 8212:8212/tcp  # REST API port
         user: ${UID}:${GID}
         environment:
+            LD_PRELOAD: "/palworld/steamapps/downloading/2394010/libUE4SS.so"
+
             TZ: ${TZ}
             PORT: 8211
             PLAYERS: 16
@@ -37,3 +39,4 @@ services:
             - game-settings.env
         volumes:
             - ${DATA_DIR}:/palworld/
+            - ./mods/libUE4SS.so:/palworld/steamapps/downloading/2394010/libUE4SS.so:ro
