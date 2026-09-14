@@ -1,0 +1,1 @@
+return{hotkey="F10",hud_enabled=true,hud_language="auto",hud_x=20,hud_y=230,hud_scale=0.82,hud_toggle_notice_seconds=2.0,enabled_by_default=true,public_drop_policy="ownership_first",server_context_lifetime_ms=8000,server_pre_event_buffer_ms=1500,server_match_radius_cm=4000,verbose_logging=false}
