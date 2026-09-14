@@ -1,14 +1,15 @@
 services:
     palworld:
-        image: thijsvanloef/palworld-server-docker:latest
+        image: musclepr/palworld-server-docker:windows
         restart: unless-stopped
         stop_grace_period: 30s
         ports:
             - "8211:8211/udp"  # Server port
             - "27015:27015/udp"  # Steam port
             # - 8212:8212/tcp  # REST API port
-        user: ${UID}:${GID}
         environment:
+            PUID: ${UID}
+            PGID: ${GID}
             TZ: ${TZ}
             PORT: 8211
             PLAYERS: 16
@@ -33,6 +34,10 @@ services:
             SERVER_DESCRIPTION: ${SERVER_DESCRIPTION}
             COMMUNITY: false
             CROSSPLAY_PLATFORMS: "(Steam,Xbox,PS5,Mac)"
+
+            MOD_ENABLED: true
+            MOD_IDS: "3767052724,3774920319,3777919511"
+            NOSTEAM: true
         env_file:
             - game-settings.env
         volumes:
